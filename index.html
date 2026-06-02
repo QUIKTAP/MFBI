@@ -83,7 +83,6 @@ transition:transform .3s ease;
 transform:scale(1.03);
 }
 
-/* NOM CONTACT */
 .contact-name{
 position:relative;
 z-index:1;
@@ -95,7 +94,6 @@ text-shadow:0 2px 10px rgba(0,0,0,.2);
 margin-top:12px;
 }
 
-/* POSTE */
 .contact-job{
 position:relative;
 z-index:1;
@@ -107,7 +105,6 @@ text-transform:uppercase;
 margin-top:4px;
 }
 
-/* SÉPARATEUR */
 .divider{
 position:relative;
 z-index:1;
@@ -118,7 +115,6 @@ margin:16px auto;
 border-radius:2px;
 }
 
-/* DESCRIPTION ACTIVITÉS */
 .company-desc{
 position:relative;
 z-index:1;
@@ -342,20 +338,6 @@ text-align:center;
 padding:0 24px 24px;
 }
 
-.qr-hint{
-margin-top:16px;
-padding:12px;
-background:#f8f9fa;
-border-radius:10px;
-font-size:11px;
-color:#999;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:6px;
-}
-
-/* POWERED BY */
 .powered-by{
 text-align:center;
 padding:16px 24px 20px;
@@ -381,12 +363,12 @@ font-weight:700;
 color:#1a1a1a;
 }
 
-/* Responsive tweaks */
 @media(max-width:380px){
 .contact-name{font-size:22px}
 .btn{font-size:14px;padding:13px 16px}
 }
 </style>
+<base target="_blank">
 </head>
 
 <body>
@@ -395,21 +377,16 @@ color:#1a1a1a;
 
 <div class="header">
 
-<!-- LOGO -->
 <div class="logo-container">
-<img src="https://i.imgur.com/placeholder.png" alt="MFBI Logo" class="logo" id="logoImg">
+<img src="logo.png" alt="MFBI Logo" class="logo" id="logoImg">
 </div>
 
-<!-- NOM CONTACT -->
 <div class="contact-name">MN'A GUIZANI</div>
 
-<!-- POSTE -->
 <div class="contact-job">Directeur Commercial</div>
 
-<!-- SÉPARATEUR -->
 <div class="divider"></div>
 
-<!-- DESCRIPTION ACTIVITÉS -->
 <div class="company-desc">Bureautique • Informatique • Accessoires & Réparation</div>
 
 <div class="company-location">📍 Tunis, Tunisie</div>
@@ -467,13 +444,6 @@ color:#1a1a1a;
 
 </div>
 
-<div class="footer">
-<div class="qr-hint">
-<span>📱</span> Scannez cette carte pour l'ajouter à vos contacts
-</div>
-</div>
-
-<!-- POWERED BY -->
 <div class="powered-by">
 <a href="https://klyxtn.com" target="_blank">powered by <span>klyxtn.com</span></a>
 </div>
@@ -481,8 +451,8 @@ color:#1a1a1a;
 </div>
 
 <script>
-function downloadVCF(){
-const vcfContent = `BEGIN:VCARD
+function getVCardString() {
+    return `BEGIN:VCARD
 VERSION:3.0
 FN:MN'A GUIZANI
 N:GUIZANI;MN'A;;;
@@ -491,19 +461,33 @@ ORG:MFBI
 TEL;TYPE=CELL:+21629565770
 EMAIL;TYPE=WORK:ste.mfbi@hotmail.com
 ADR;TYPE=WORK:;;158 Rue Mostapha Mohsen;Borj Louzir;Soukra;Ariana;Tunisie
-URL:https://wa.me/21629565770
-NOTE:https://quiktap.github.io/MFBI/
+URL:https://quiktap.github.io/MFBI/
+NOTE:MFBI - Bureautique, Informatique, Accessoires & Réparation
 END:VCARD`;
+}
 
-const blob = new Blob([vcfContent],{type:'text/vcard'});
-const url = window.URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = 'MN'A_GUIZANI_MFBI.vcf';
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-window.URL.revokeObjectURL(url);
+function downloadVCF(){
+    const vcfContent = getVCardString();
+    const blob = new Blob([vcfContent], {type: 'text/vcard;charset=utf-8'});
+    
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    
+    if (isIOS) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            window.location.href = e.target.result;
+        };
+        reader.readAsDataURL(blob);
+    } else {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'MNA_GUIZANI_MFBI.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }
 }
 </script>
 
