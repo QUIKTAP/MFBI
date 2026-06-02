@@ -401,7 +401,7 @@ color:#1a1a1a;
 </div>
 
 <!-- NOM CONTACT -->
-<div class="contact-name">MNE GUIZANI</div>
+<div class="contact-name">MN'A GUIZANI</div>
 
 <!-- POSTE -->
 <div class="contact-job">Directeur Commercial</div>
@@ -484,22 +484,22 @@ color:#1a1a1a;
 function downloadVCF(){
 const vcfContent = `BEGIN:VCARD
 VERSION:3.0
-FN:MNE GUIZANI
-N:GUIZANI;MNE;;;
+FN:MN'A GUIZANI
+N:GUIZANI;MN'A;;;
 TITLE:Directeur Commercial
 ORG:MFBI
 TEL;TYPE=CELL:+21629565770
 EMAIL;TYPE=WORK:ste.mfbi@hotmail.com
 ADR;TYPE=WORK:;;158 Rue Mostapha Mohsen;Borj Louzir;Soukra;Ariana;Tunisie
 URL:https://wa.me/21629565770
-NOTE:MFBI - Bureautique, Informatique, Accessoires & Réparation
+NOTE:https://quiktap.github.io/MFBI/
 END:VCARD`;
 
 const blob = new Blob([vcfContent],{type:'text/vcard'});
 const url = window.URL.createObjectURL(blob);
 const a = document.createElement('a');
 a.href = url;
-a.download = 'MNE_GUIZANI_MFBI.vcf';
+a.download = 'MN'A_GUIZANI_MFBI.vcf';
 document.body.appendChild(a);
 a.click();
 document.body.removeChild(a);
