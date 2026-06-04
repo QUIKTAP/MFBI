@@ -6,6 +6,8 @@
 <title>MFBI | Carte Digitale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *{
 margin:0;
@@ -157,94 +159,91 @@ margin-bottom:12px;
 padding-left:4px;
 }
 
-.actions{
-display:flex;
-flex-direction:column;
-gap:10px;
+/* ACTIONS RAPIDES - ICÔNES SEULES */
+.actions-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
 margin-bottom:24px;
 }
 
-.btn{
+.action-btn{
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
-gap:10px;
-padding:15px 20px;
-border-radius:14px;
-font-size:15px;
-font-weight:700;
+gap:8px;
+padding:18px 8px;
+border-radius:16px;
 text-decoration:none;
 transition:all .25s ease;
 border:none;
 cursor:pointer;
-position:relative;
-overflow:hidden;
+background:#f8f9fa;
+color:#1a1a1a;
 }
 
-.btn::after{
-content:'';
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-transition:left .5s ease;
+.action-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.btn:hover::after{
-left:100%;
+.action-btn i{
+font-size:22px;
 }
 
-.btn-primary{
-background:linear-gradient(135deg,#e30613,#c40010);
-color:#fff;
-box-shadow:0 6px 20px rgba(227,6,19,.3);
+.action-btn span{
+font-size:11px;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.5px;
 }
 
-.btn-primary:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 30px rgba(227,6,19,.4);
-}
-
-.btn-whatsapp{
+.action-whatsapp{
 background:linear-gradient(135deg,#25d366,#128c7e);
 color:#fff;
-box-shadow:0 6px 20px rgba(37,211,102,.3);
+box-shadow:0 4px 15px rgba(37,211,102,.25);
 }
 
-.btn-whatsapp:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 30px rgba(37,211,102,.4);
+.action-whatsapp:hover{
+box-shadow:0 8px 25px rgba(37,211,102,.4);
 }
 
-.btn-email{
+.action-email{
 background:linear-gradient(135deg,#1a1a1a,#2d2d2d);
 color:#fff;
-box-shadow:0 6px 20px rgba(0,0,0,.2);
+box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
-.btn-email:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 30px rgba(0,0,0,.3);
+.action-email:hover{
+box-shadow:0 8px 25px rgba(0,0,0,.3);
 }
 
-.btn-outline{
-background:#fff;
-color:#1a1a1a;
-border:2px solid #eee;
+.action-call{
+background:linear-gradient(135deg,#e30613,#c40010);
+color:#fff;
+box-shadow:0 4px 15px rgba(227,6,19,.25);
 }
 
-.btn-outline:hover{
-border-color:#e30613;
-color:#e30613;
-transform:translateY(-2px);
+.action-call:hover{
+box-shadow:0 8px 25px rgba(227,6,19,.4);
 }
 
-.socials{
+.action-maps{
+background:linear-gradient(135deg,#4285f4,#34a853);
+color:#fff;
+box-shadow:0 4px 15px rgba(66,133,244,.25);
+}
+
+.action-maps:hover{
+box-shadow:0 8px 25px rgba(66,133,244,.4);
+}
+
+/* RÉSEAUX SOCIAUX - ICÔNES SEULES */
+.socials-grid{
 display:grid;
-grid-template-columns:1fr;
-gap:10px;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 margin-bottom:24px;
 }
 
@@ -252,13 +251,17 @@ margin-bottom:24px;
 display:flex;
 align-items:center;
 justify-content:center;
-gap:8px;
-padding:13px;
-border-radius:12px;
+gap:10px;
+padding:14px;
+border-radius:14px;
 text-decoration:none;
 font-size:14px;
 font-weight:700;
 transition:all .25s ease;
+}
+
+.social-btn i{
+font-size:20px;
 }
 
 .social-facebook{
@@ -270,6 +273,17 @@ box-shadow:0 4px 15px rgba(24,119,242,.25);
 .social-facebook:hover{
 transform:translateY(-2px);
 box-shadow:0 8px 25px rgba(24,119,242,.35);
+}
+
+.social-instagram{
+background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+color:#fff;
+box-shadow:0 4px 15px rgba(220,39,67,.25);
+}
+
+.social-instagram:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 25px rgba(220,39,67,.35);
 }
 
 .services{
@@ -292,8 +306,10 @@ font-weight:600;
 color:#c40010;
 }
 
-.service-tag span{
+.service-tag i{
 font-size:14px;
+width:20px;
+text-align:center;
 }
 
 .slogan{
@@ -333,9 +349,33 @@ margin-top:6px;
 font-weight:500;
 }
 
-.footer{
-text-align:center;
-padding:0 24px 24px;
+.btn-save{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+width:100%;
+padding:16px;
+border-radius:14px;
+font-size:15px;
+font-weight:700;
+text-decoration:none;
+transition:all .25s ease;
+border:none;
+cursor:pointer;
+background:linear-gradient(135deg,#e30613,#c40010);
+color:#fff;
+box-shadow:0 6px 20px rgba(227,6,19,.3);
+margin-bottom:20px;
+}
+
+.btn-save:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(227,6,19,.4);
+}
+
+.btn-save i{
+font-size:18px;
 }
 
 .powered-by{
@@ -365,7 +405,8 @@ color:#1a1a1a;
 
 @media(max-width:380px){
 .contact-name{font-size:22px}
-.btn{font-size:14px;padding:13px 16px}
+.actions-grid{grid-template-columns:repeat(2,1fr)}
+.action-btn span{font-size:10px}
 }
 </style>
 <base target="_blank">
@@ -389,46 +430,54 @@ color:#1a1a1a;
 
 <div class="company-desc">Bureautique • Informatique • Accessoires & Réparation</div>
 
-<div class="company-location">📍 Tunis, Tunisie</div>
+<div class="company-location">
+<i class="fas fa-location-dot" style="font-size:10px"></i> Tunis, Tunisie
+</div>
 
 </div>
 
 <div class="content">
 
 <div class="section-title">Actions rapides</div>
-<div class="actions">
+<div class="actions-grid">
 
-<a class="btn btn-whatsapp" href="https://wa.me/21629565770" target="_blank">
-<span>💬</span> Discuter sur WhatsApp
+<a class="action-btn action-whatsapp" href="https://wa.me/21629565770" target="_blank">
+<i class="fab fa-whatsapp"></i>
+<span>WhatsApp</span>
 </a>
 
-<a class="btn btn-email" href="mailto:ste.mfbi@hotmail.com">
-<span>✉️</span> Envoyer un email
+<a class="action-btn action-email" href="mailto:ste.mfbi@hotmail.com">
+<i class="fas fa-envelope"></i>
+<span>Email</span>
 </a>
 
-<a class="btn btn-primary" href="tel:+21629565770">
-<span>📞</span> Appeler maintenant
+<a class="action-btn action-call" href="tel:+21629565770">
+<i class="fas fa-phone"></i>
+<span>Appeler</span>
 </a>
 
-<a class="btn btn-outline" href="https://maps.google.com/?q=158+Rue+Mostapha+Mohsen+Borj+Louzir+Soukra+Ariana+Tunisie" target="_blank">
-<span>📍</span> Voir sur Google Maps
+<a class="action-btn action-maps" href="https://maps.google.com/?q=158+Rue+Mostapha+Mohsen+Borj+Louzir+Soukra+Ariana+Tunisie" target="_blank">
+<i class="fas fa-map-location-dot"></i>
+<span>Maps</span>
 </a>
 
 </div>
 
 <div class="section-title">Réseaux sociaux</div>
-<div class="socials">
+<div class="socials-grid">
+
 <a class="social-btn social-facebook" href="https://www.facebook.com/profile.php?id=100031324402050" target="_blank">
-<span>📘</span> Facebook
+<i class="fab fa-facebook-f"></i> Facebook
 </a>
+
 </div>
 
 <div class="section-title">Nos services</div>
 <div class="services">
-<div class="service-tag"><span>🖨️</span> Bureautique</div>
-<div class="service-tag"><span>💻</span> Informatique</div>
-<div class="service-tag"><span>🔌</span> Accessoires</div>
-<div class="service-tag"><span>🔧</span> Réparation</div>
+<div class="service-tag"><i class="fas fa-print"></i> Bureautique</div>
+<div class="service-tag"><i class="fas fa-laptop"></i> Informatique</div>
+<div class="service-tag"><i class="fas fa-plug"></i> Accessoires</div>
+<div class="service-tag"><i class="fas fa-screwdriver-wrench"></i> Réparation</div>
 </div>
 
 <div class="slogan">
@@ -436,11 +485,9 @@ color:#1a1a1a;
 <div class="slogan-sub">Votre satisfaction, notre priorité</div>
 </div>
 
-<div class="actions">
-<button class="btn btn-primary" onclick="downloadVCF()">
-<span>👤</span> Enregistrer le contact
+<button class="btn-save" onclick="downloadVCF()">
+<i class="fas fa-user-plus"></i> Enregistrer le contact
 </button>
-</div>
 
 </div>
 
